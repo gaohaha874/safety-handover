@@ -3,644 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>杭州电化 - 安全交底小程序</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+    <title>杭州电化 - 作业安全交底小程序</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        header {
-            background: linear-gradient(120deg, #1a56db 0%, #3b82f6 100%);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-        
-        .company-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .app-title {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        
-        .app-description {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-        
-        .card-section {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-        
-        .form-section {
-            flex: 2;
-            min-width: 400px;
-            padding: 20px;
-            border-left: 1px solid #eee;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-header {
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        .restricted .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .hot-work .card-header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-            text-align: center;
-            color: #4a5568;
-        }
-        
-        .card-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #2d3748;
-        }
-        
-        .card-desc {
-            color: #718096;
-            margin-bottom: 20px;
-            text-align: center;
-            line-height: 1.6;
-        }
-        
-        .card-features {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        
-        .card-features li {
-            margin-bottom: 8px;
-            color: #4a5568;
-        }
-        
-        .form-container {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-            display: none;
-        }
-        
-        .active-form {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .form-title {
-            font-size: 22px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            color: #1a56db;
-            display: flex;
-            align-items: center;
-        }
-        
-        .form-title i {
-            margin-right: 10px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #4a5568;
-        }
-        
-        .form-input, .form-textarea, .form-select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            border-color: #3b82f6;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-        
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .checkbox-group {
-            margin: 10px 0;
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            padding: 8px 5px;
-            border-radius: 6px;
-            transition: background 0.2s;
-        }
-        
-        .checkbox-label:hover {
-            background: #edf2f7;
-        }
-        
-        .checkbox-label input {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-        }
-        
-        .signature-pad {
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            height: 150px;
-            margin-bottom: 15px;
-            background: #f9f9f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-        
-        .signature-pad:hover {
-            border-color: #a0aec0;
-        }
-        
-        .submit-btn {
-            background: #1a56db;
-            color: white;
-            padding: 15px 25px;
-            font-size: 18px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-            font-weight: bold;
-        }
-        
-        .submit-btn:hover {
-            background: #1e4bb8;
-        }
-        
-        .records-container {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .records-title {
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: #2d3748;
-            display: flex;
-            align-items: center;
-        }
-        
-        .records-title i {
-            margin-right: 10px;
-            color: #1a56db;
-        }
-        
-        .record-item {
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .record-item:last-child {
-            border-bottom: none;
-        }
-        
-        .record-info {
-            flex: 1;
-        }
-        
-        .record-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #4a5568;
-        }
-        
-        .record-detail {
-            color: #718096;
-            font-size: 14px;
-        }
-        
-        .record-date {
-            color: #a0aec0;
-            font-size: 14px;
-        }
-        
-        .record-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .status-completed {
-            background: #c6f6d5;
-            color: #2f855a;
-        }
-        
-        .status-pending {
-            background: #fed7d7;
-            color: #c53030;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #718096;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-        }
-        
-        .deploy-info {
-            margin-top: 15px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        
-        .deploy-info h3 {
-            margin-bottom: 10px;
-            color: #4a5568;
-        }
-        
-        .deploy-info p {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .form-section {
-                border-left: none;
-                border-top: 1px solid #eee;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+        body{background:linear-gradient(135deg,#f5f7fa 0%,#e4efe9 100%);min-height:100vh;padding:20px;color:#333}
+        .container{max-width:1000px;margin:0 auto;background:#fff;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden}
+        header{background:linear-gradient(120deg,#1a56db 0%,#3b82f6 100%);color:#fff;padding:25px;text-align:center}
+        .company-name{font-size:24px;font-weight:bold;margin-bottom:10px}
+        .app-title{font-size:28px;margin-bottom:15px}
+        .app-description{font-size:16px;opacity:.9}
+        .main-content{display:flex;flex-wrap:wrap;padding:20px}
+        .card-section{flex:1;min-width:300px;padding:20px}
+        .form-section{flex:2;min-width:400px;padding:20px;border-left:1px solid #eee}
+        .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.08);margin-bottom:25px;transition:transform .3s;cursor:pointer}
+        .card:hover{transform:translateY(-5px)}
+        .card-header{padding:20px;text-align:center;color:#fff;font-weight:bold;font-size:20px}
+        .restricted .card-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+        .hot-work .card-header{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
+        .card-body{padding:20px}
+        .card-icon{font-size:50px;margin-bottom:15px;text-align:center;color:#4a5568}
+        .card-title{font-size:20px;margin-bottom:10px;text-align:center;color:#2d3748}
+        .card-desc{color:#718096;margin-bottom:20px;text-align:center;line-height:1.6}
+        .form-container{background:#fff;border-radius:12px;padding:25px;box-shadow:0 5px 15px rgba(0,0,0,.05);margin-bottom:30px;display:none}
+        .active-form{display:block;animation:fadeIn .5s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .form-title{font-size:22px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #eee;color:#1a56db;display:flex;align-items:center}
+        .form-title i{margin-right:10px}
+        .form-group{margin-bottom:20px}
+        .form-label{display:block;margin-bottom:8px;font-weight:bold;color:#4a5568}
+        .form-input,.form-textarea,.form-select{width:100%;padding:12px 15px;border:1px solid #ddd;border-radius:8px;font-size:16px;transition:border-color .3s}
+        .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:#3b82f6;outline:none;box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+        .form-textarea{min-height:100px;resize:vertical}
+        .checkbox-group{background:#f8fafc;padding:15px;border-radius:8px}
+        .checkbox-label{display:flex;align-items:center;margin-bottom:8px;padding:8px 5px;border-radius:6px;transition:background .2s}
+        .checkbox-label:hover{background:#edf2f7}
+        .checkbox-label input{margin-right:10px;width:18px;height:18px}
+        .submit-btn{background:#1a56db;color:#fff;padding:15px 25px;font-size:18px;margin-top:20px;border:none;border-radius:8px;cursor:pointer;width:100%;transition:background .3s;font-weight:bold}
+        .submit-btn:hover{background:#1e4bb8}
+        @media(max-width:768px){.main-content{flex-direction:column}.form-section{border-left:none;border-top:1px solid #eee}}
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="company-name">杭州电化新材料有限公司</div>
-            <h1 class="app-title">作业安全交底小程序</h1>
-            <p class="app-description">移动端安全交底与风险告知确认系统</p>
-        </header>
-        
-        <div class="main-content">
-            <div class="card-section">
-                <div class="card restricted" onclick="showForm('restricted')">
-                    <div class="card-header">
-                        <i class="fas fa-hard-hat"></i> 受限空间作业
-                    </div>
-                    <div class="card-body">
-                        <div class="card-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <h3 class="card-title">受限空间安全交底</h3>
-                        <p class="card-desc">进入封闭或部分封闭空间进行的作业，可能存在缺氧、有毒气体等风险</p>
-                        
-                        <ul class="card-features">
-                            <li>设备内物质置换、排空</li>
-                            <li>传动设施断电和挂牌</li>
-                            <li>持续使用便携式报警仪检测</li>
-                            <li>配备应急器材和劳保用品</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="card hot-work" onclick="showForm('hot-work')">
-                    <div class="card-header">
-                        <i class="fas fa-fire"></i> 动火作业
-                    </div>
-                    <div class="card-body">
-                        <div class="card-icon">
-                            <i class="fas fa-fire-extinguisher"></i>
-                        </div>
-                        <h3 class="card-title">动火作业安全交底</h3>
-                        <p class="card-desc">进行焊接、切割、燃烧等可能产生火花或高温的作业</p>
-                        
-                        <ul class="card-features">
-                            <li>气瓶安全间距管理</li>
-                            <li>动火分析取样</li>
-                            <li>易燃易爆品清理</li>
-                            <li>个人防护用品配备</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="records-container">
-                    <h2 class="records-title"><i class="fas fa-history"></i> 最近交底记录</h2>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">受限空间作业 - 设备检修</div>
-                            <div class="record-detail">作业单位：设备维修部 | 负责人：张三</div>
-                        </div>
-                        <div class="record-date">2023-10-15</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">动火作业 - 管道焊接</div>
-                            <div class="record-detail">作业单位：焊接班组 | 负责人：李四</div>
-                        </div>
-                        <div class="record-date">2023-10-14</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">受限空间作业 - 罐体清洗</div>
-                            <div class="record-detail">作业单位：清洁班组 | 负责人：王五</div>
-                        </div>
-                        <div class="record-date">2023-10-12</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
+<div class="container">
+    <header>
+        <div class="company-name">杭州电化新材料有限公司</div>
+        <h1 class="app-title">作业安全交底小程序</h1>
+        <p class="app-description">移动端安全交底与风险告知确认系统</p>
+    </header>
+
+    <div class="main-content">
+        <!-- 左侧卡片 -->
+        <div class="card-section">
+            <div class="card restricted" onclick="showForm('restricted')">
+                <div class="card-header"><i class="fas fa-hard-hat"></i> 受限空间作业</div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3 class="card-title">受限空间安全交底</h3>
+                    <p class="card-desc">进入封闭或部分封闭空间进行的作业，可能存在缺氧、有毒气体等风险</p>
+                    <ul class="card-features">
+                        <li>设备内物质置换、排空</li>
+                        <li>传动设施断电和挂牌</li>
+                        <li>持续使用便携式报警仪检测</li>
+                        <li>配备应急器材和劳保用品</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="form-section">
-                <div id="restricted-form" class="form-container active-form">
-                    <h2 class="form-title"><i class="fas fa-hard-hat"></i> 受限空间作业安全交底</h2>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业人员</label>
-                        <input type="text" class="form-input" placeholder="请输入作业人员姓名，多人用逗号分隔">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">防范措施确认</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 对设备内的物质进行置换、排空
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 传动设施已断电和挂牌
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 持续使用便携式报警仪检测
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 穿戴好劳保用品
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 现场配备呼吸器、灭火器、救援绳等应急器材
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">其他注意事项</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 临时用电
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 高处作业
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 盲板抽堵作业
-                            </label>
-                        </div>
-                        <input type="text" class="form-input" placeholder="其他注意事项">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业现场负责人签字</label>
-                        <div class="signature-pad">点击此处签名</div>
-                    </div>
-                    
-                    <button class="submit-btn">提交交底记录</button>
-                </div>
-                
-                <div id="hot-work-form" class="form-container">
-                    <h2 class="form-title"><i class="fas fa-fire"></i> 动火作业安全交底</h2>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业人员签字</label>
-                        <div class="signature-pad">点击此处签名</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">防范措施确认</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 电焊机搁置平整、坚固
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 氧气瓶与乙炔瓶间距5米以上
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 距离动火点10米以上
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 有防倾倒措施
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 动火分析取样时间符合要求
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 作业区域无易燃易爆品
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 现场配备灭火器，专人看护
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 佩戴护面罩、劳保鞋等个人防护用品
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">其他注意事项</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 临时用电
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 高处作业
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox"> 受限空间作业
-                            </label>
-                        </div>
-                        <input type="text" class="form-input" placeholder="其他注意事项">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">作业现场负责人签字</label>
-                        <div class="signature-pad">点击此处签名</div>
-                    </div>
-                    
-                    <button class="submit-btn">提交交底记录</button>
+
+            <div class="card hot-work" onclick="showForm('hot-work')">
+                <div class="card-header"><i class="fas fa-fire"></i> 动火作业</div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                    <h3 class="card-title">动火作业安全交底</h3>
+                    <p class="card-desc">进行焊接、切割、燃烧等可能产生火花或高温的作业</p>
+                    <ul class="card-features">
+                        <li>气瓶安全间距管理</li>
+                        <li>动火分析取样</li>
+                        <li>易燃易爆品清理</li>
+                        <li>个人防护用品配备</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <p>© 2023 杭州电化新材料有限公司 - 安全交底系统</p>
-            
-            <div class="deploy-info">
-                <h3>部署说明</h3>
-                <p>此应用为静态HTML应用，可以直接部署到任何Web服务器或静态网站托管服务：</p>
-                <p>1. 将本HTML文件保存为index.html</p>
-                <p>2. 上传到GitHub Pages、Netlify、Vercel或您自己的服务器</p>
-                <p>3. 通过生成的URL分享给用户使用</p>
+
+        <!-- 右侧表单 -->
+        <div class="form-section">
+            <!-- 受限空间 -->
+            <div id="restricted-form" class="form-container active-form">
+                <h2 class="form-title"><i class="fas fa-hard-hat"></i> 受限空间作业安全交底</h2>
+                <form action="https://formspree.io/f/xqazkjnw" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="form-label">作业单位</label>
+                        <input type="text" name="unit" class="form-input" placeholder="请输入作业单位名称" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作业内容</label>
+                        <textarea name="content" class="form-textarea" placeholder="请输入具体的作业内容" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作业人员</label>
+                        <input type="text" name="workers" class="form-input" placeholder="多人用逗号分隔" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">车间项目负责人</label>
+                        <input type="text" name="leader" class="form-input" placeholder="请输入负责人姓名" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">防范措施确认</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="置换排空"> 对设备内的物质进行置换、排空</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="断电挂牌"> 传动设施已断电和挂牌</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="报警仪检测"> 持续使用便携式报警仪检测</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="劳保用品"> 穿戴好劳保用品</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="应急器材"> 现场配备呼吸器、灭火器、救援绳等应急器材</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">其他注意事项及关联作业</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="盲板抽堵"> 盲板抽堵作业</label>
+                        </div>
+                        <input type="text" name="otherText" class="form-input" placeholder="其他补充说明">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">应急措施</label>
+                        <div style="background:#fff3cd;color:#856404;padding:10px;border-radius:6px;font-size:14px;line-height:1.6">
+                            发生中毒或窒息事故时，现场人员大声呼叫，并拨打急救电话 0571-86617799-6521、0571-86617799-6629；救援时戴好正压空气呼吸器，迅速将人员转移到空气流通的地方，进行心肺复苏急救。
+                        </div>
+                    </div>
+
+                    <!-- 双保险：文字+拍照 -->
+                    <div class="form-group">
+                        <label class="form-label">现场负责人姓名（确认签字）*</label>
+                        <input type="text" name="signName" class="form-input" placeholder="请再次输入现场负责人姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">现场照片（佐证）*</label>
+                        <input type="file" name="photo" accept="image/*" capture="environment" required>
+                    </div>
+
+                    <input type="hidden" name="recordType" value="受限空间作业">
+                    <button type="submit" class="submit-btn">提交交底记录</button>
+                </form>
             </div>
-        </footer>
+
+            <!-- 动火作业 -->
+            <div id="hot-work-form" class="form-container">
+                <h2 class="form-title"><i class="fas fa-fire"></i> 动火作业安全交底</h2>
+                <form action="https://formspree.io/f/xqazkjnw" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="form-label">作业单位</label>
+                        <input type="text" name="unit" class="form-input" placeholder="请输入作业单位名称" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作业内容</label>
+                        <textarea name="content" class="form-textarea" placeholder="请输入具体的作业内容" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作业人员</label>
+                        <input type="text" name="workers" class="form-input" placeholder="多人用逗号分隔" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">车间项目负责人</label>
+                        <input type="text" name="leader" class="form-input" placeholder="请输入负责人姓名" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">防范措施确认</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="电焊机平整"> 电焊机搁置平整、坚固</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="气瓶间距"> 氧气瓶与乙炔瓶间距5米以上</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="动火分析"> 动火分析取样时间符合要求</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="清理易燃品"> 作业区域无易燃易爆品</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="灭火器看护"> 现场配备灭火器，专人看护</label>
+                            <label class="checkbox-label"><input type="checkbox" name="measures" value="防护用品"> 佩戴护面罩、劳保鞋等个人防护用品</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">其他注意事项及关联作业</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
+                            <label class="checkbox-label"><input type="checkbox" name="others" value="受限空间"> 受限空间作业</label>
+                        </div>
+                        <input type="text" name="otherText" class="form-input" placeholder="其他补充说明">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">应急措施</label>
+                        <div style="background:#fff3cd;color:#856404;padding:10px;border-radius:6px;font-size:14px;line-height:1.6">
+                            发生触电或灼伤时，现场人员大声呼叫，并拨打安全环保部门电话 0571-86617799-6579、0571-86617799-6629；迅速查看人员受伤情况，首先确保呼吸顺畅，不能随意搬动伤者，等待救援。发生火灾迅速切断起火源，消灭初期火点，按照公司事故应急预案处理。
+                        </div>
+                    </div>
+
+                    <!-- 双保险：文字+拍照 -->
+                    <div class="form-group">
+                        <label class="form-label">现场负责人姓名（确认签字）*</label>
+                        <input type="text" name="signName" class="form-input" placeholder="请再次输入现场负责人姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">现场照片（佐证）*</label>
+                        <input type="file" name="photo" accept="image/*" capture="environment" required>
+                    </div>
+
+                    <input type="hidden" name="recordType" value="动火作业">
+                    <button type="submit" class="submit-btn">提交交底记录</button>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <script>
-        function showForm(type) {
-            // 隐藏所有表单
-            document.getElementById('restricted-form').classList.remove('active-form');
-            document.getElementById('hot-work-form').classList.remove('active-form');
-            
-            // 显示选中的表单
-            document.getElementById(type + '-form').classList.add('active-form');
-        }
-        
-        // 为签名区域添加点击事件
-        document.querySelectorAll('.signature-pad').forEach(pad => {
-            pad.addEventListener('click', function() {
-                alert('在实际应用中，这里会打开签名面板供用户手写签名');
-                this.innerHTML = '<i class="fas fa-check-circle" style="color:green; font-size:24px;"></i><p>已签名</p>';
-                this.style.borderColor = 'green';
-            });
-        });
-        
-        // 模拟表单提交功能
-        document.querySelectorAll('.submit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('交底记录已提交！后台已保存数据。');
-                // 在实际应用中，这里会通过AJAX将数据发送到服务器
-            });
-        });
-    </script>
-</body>
+    <footer>
+        <p>© 2023 杭州电化新材料有限公司 - 安全交底系统</p>
+    </footer>
+</div>
 
+<script>
+function showForm(type){
+    document.querySelectorAll('.form-container').forEach(f=>f.classList.remove('active-form'));
+    document.getElementById(type+'-form').classList.add('active-form');
+}
+</script>
+</body>
 </html>
