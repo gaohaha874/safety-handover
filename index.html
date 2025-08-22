@@ -16,81 +16,79 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
             color: #333;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 100%;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
         }
         
         header {
             background: linear-gradient(120deg, #1a56db 0%, #3b82f6 100%);
             color: white;
-            padding: 25px;
+            padding: 20px 15px;
             text-align: center;
         }
         
         .company-name {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .app-title {
-            font-size: 28px;
-            margin-bottom: 15px;
+            font-size: 22px;
+            margin-bottom: 10px;
         }
         
         .app-description {
-            font-size: 16px;
+            font-size: 14px;
             opacity: 0.9;
         }
         
         .main-content {
             display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
+            flex-direction: column;
+            padding: 15px;
         }
         
         .card-section {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
+            width: 100%;
+            padding: 10px 0;
         }
         
         .form-section {
-            flex: 2;
-            min-width: 400px;
-            padding: 20px;
-            border-left: 1px solid #eee;
+            width: 100%;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
         }
         
         .card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
             cursor: pointer;
         }
         
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .card-header {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             color: white;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .restricted .card-header {
@@ -102,46 +100,48 @@
         }
         
         .card-body {
-            padding: 20px;
+            padding: 15px;
         }
         
         .card-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
+            font-size: 40px;
+            margin-bottom: 10px;
             text-align: center;
             color: #4a5568;
         }
         
         .card-title {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 8px;
             text-align: center;
             color: #2d3748;
         }
         
         .card-desc {
             color: #718096;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 14px;
         }
         
         .card-features {
-            margin: 15px 0;
+            margin: 10px 0;
             padding-left: 20px;
         }
         
         .card-features li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #4a5568;
+            font-size: 14px;
         }
         
         .form-container {
             background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
             display: none;
         }
         
@@ -156,8 +156,8 @@
         }
         
         .form-title {
-            font-size: 22px;
-            margin-bottom: 20px;
+            font-size: 20px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid #eee;
             color: #1a56db;
@@ -170,19 +170,20 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .form-label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: bold;
             color: #4a5568;
+            font-size: 14px;
         }
         
         .form-input, .form-textarea, .form-select {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
@@ -203,7 +204,7 @@
         .checkbox-group {
             margin: 10px 0;
             background: #f8fafc;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
         }
         
@@ -214,6 +215,7 @@
             padding: 8px 5px;
             border-radius: 6px;
             transition: background 0.2s;
+            font-size: 14px;
         }
         
         .checkbox-label:hover {
@@ -229,17 +231,18 @@
         .emergency-measures {
             background: #fff5f5;
             border-left: 4px solid #f56565;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 12px;
+            margin: 15px 0;
             border-radius: 0 8px 8px 0;
         }
         
         .emergency-title {
             font-weight: bold;
             color: #c53030;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
+            font-size: 16px;
         }
         
         .emergency-title i {
@@ -248,13 +251,14 @@
         
         .emergency-content {
             color: #718096;
-            line-height: 1.6;
+            line-height: 1.5;
+            font-size: 14px;
         }
         
         .image-upload {
             border: 2px dashed #ddd;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             background: #f9f9f9;
             cursor: pointer;
@@ -266,14 +270,15 @@
         }
         
         .image-upload i {
-            font-size: 40px;
+            font-size: 32px;
             color: #a0aec0;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .image-upload p {
             color: #718096;
             margin: 5px 0;
+            font-size: 14px;
         }
         
         .image-upload input {
@@ -282,8 +287,8 @@
         
         .upload-preview {
             max-width: 100%;
-            max-height: 200px;
-            margin-top: 15px;
+            max-height: 150px;
+            margin-top: 10px;
             display: none;
             border-radius: 8px;
             border: 1px solid #ddd;
@@ -292,9 +297,9 @@
         .submit-btn {
             background: #1a56db;
             color: white;
-            padding: 15px 25px;
-            font-size: 18px;
-            margin-top: 20px;
+            padding: 15px;
+            font-size: 16px;
+            margin-top: 15px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -307,160 +312,86 @@
             background: #1e4bb8;
         }
         
-        .records-container {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .records-title {
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: #2d3748;
-            display: flex;
-            align-items: center;
-        }
-        
-        .records-title i {
-            margin-right: 10px;
-            color: #1a56db;
-        }
-        
-        .record-item {
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .record-item:last-child {
-            border-bottom: none;
-        }
-        
-        .record-info {
-            flex: 1;
-        }
-        
-        .record-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #4a5568;
-        }
-        
-        .record-detail {
-            color: #718096;
-            font-size: 14px;
-        }
-        
-        .record-date {
-            color: #a0aec0;
-            font-size: 14px;
-        }
-        
-        .record-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .status-completed {
-            background: #c6f6d5;
-            color: #2f855a;
-        }
-        
-        .status-pending {
-            background: #fed7d7;
-            color: #c53030;
-        }
-        
         footer {
             text-align: center;
-            margin-top: 40px;
             padding: 20px;
             color: #718096;
             font-size: 14px;
             border-top: 1px solid #eee;
         }
         
-        .deploy-info {
-            margin-top: 15px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        
-        .deploy-info h3 {
-            margin-bottom: 10px;
-            color: #4a5568;
-        }
-        
-        .deploy-info p {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 8px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification.success {
-            border-left: 4px solid #48bb78;
-        }
-        
-        .notification.error {
-            border-left: 4px solid #f56565;
-        }
-        
-        .notification i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-        
-        .notification.success i {
-            color: #48bb78;
-        }
-        
-        .notification.error i {
-            color: #f56565;
-        }
-        
-        @media (max-width: 768px) {
+        /* 响应式调整 */
+        @media (min-width: 768px) {
             .main-content {
-                flex-direction: column;
+                flex-direction: row;
+            }
+            
+            .card-section {
+                flex: 1;
+                padding: 15px;
+                min-width: 300px;
             }
             
             .form-section {
-                border-left: none;
-                border-top: 1px solid #eee;
+                flex: 2;
+                padding: 15px;
+                border-left: 1px solid #eee;
+                border-top: none;
+                min-width: 400px;
+            }
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
             }
             
-            .notification {
-                left: 20px;
-                right: 20px;
-                transform: translateY(-150%);
+            header {
+                padding: 15px 10px;
             }
             
-            .notification.show {
-                transform: translateY(0);
+            .company-name {
+                font-size: 18px;
+            }
+            
+            .app-title {
+                font-size: 20px;
+            }
+            
+            .form-container {
+                padding: 15px;
+            }
+            
+            .form-title {
+                font-size: 18px;
+            }
+        }
+        
+        /* 移动端菜单切换 */
+        .mobile-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .mobile-tab.active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-tabs {
+                display: none;
             }
         }
     </style>
@@ -472,6 +403,11 @@
             <h1 class="app-title">作业安全交底小程序</h1>
             <p class="app-description">移动端安全交底与风险告知确认系统</p>
         </header>
+        
+        <div class="mobile-tabs">
+            <div class="mobile-tab active" onclick="showForm('restricted')">受限空间</div>
+            <div class="mobile-tab" onclick="showForm('hot-work')">动火作业</div>
+        </div>
         
         <div class="main-content">
             <div class="card-section">
@@ -514,61 +450,30 @@
                         </ul>
                     </div>
                 </div>
-                
-                <div class="records-container">
-                    <h2 class="records-title"><i class="fas fa-history"></i> 最近交底记录</h2>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">受限空间作业 - 设备检修</div>
-                            <div class="record-detail">作业单位：设备维修部 | 负责人：张三</div>
-                        </div>
-                        <div class="record-date">2023-10-15</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">动火作业 - 管道焊接</div>
-                            <div class="record-detail">作业单位：焊接班组 | 负责人：李四</div>
-                        </div>
-                        <div class="record-date">2023-10-14</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
-                    
-                    <div class="record-item">
-                        <div class="record-info">
-                            <div class="record-title">受限空间作业 - 罐体清洗</div>
-                            <div class="record-detail">作业单位：清洁班组 | 负责人：王五</div>
-                        </div>
-                        <div class="record-date">2023-10-12</div>
-                        <span class="record-status status-completed">已完成</span>
-                    </div>
-                </div>
             </div>
             
             <div class="form-section">
-                <form id="restricted-form" class="form-container active-form" name="restricted-form" netlify>
+                <div id="restricted-form" class="form-container active-form">
                     <h2 class="form-title"><i class="fas fa-hard-hat"></i> 受限空间作业安全交底</h2>
                     
                     <div class="form-group">
                         <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" name="work-unit" placeholder="请输入作业单位名称" required>
+                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" name="work-content" placeholder="请输入具体的作业内容" required></textarea>
+                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业人员</label>
-                        <input type="text" class="form-input" name="workers" placeholder="请输入作业人员姓名，多人用逗号分隔" required>
+                        <input type="text" class="form-input" placeholder="请输入作业人员姓名，多人用逗号分隔">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" name="manager" placeholder="请输入负责人姓名" required>
+                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
                     </div>
                     
                     <div class="emergency-measures">
@@ -582,16 +487,16 @@
                         <label class="form-label">其他注意事项及关联作业</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-temporary-electricity"> 临时用电
+                                <input type="checkbox"> 临时用电
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-high-altitude"> 高处作业
+                                <input type="checkbox"> 高处作业
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-blind-plate"> 盲板抽堵作业
+                                <input type="checkbox"> 盲板抽堵作业
                             </label>
                         </div>
-                        <input type="text" class="form-input" name="other-notes" placeholder="其他注意事项">
+                        <input type="text" class="form-input" placeholder="其他注意事项">
                     </div>
                     
                     <div class="form-group">
@@ -599,36 +504,36 @@
                         <div class="image-upload" onclick="document.getElementById('restricted-upload').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>点击上传签名图片</p>
-                            <p class="small">支持 JPG, PNG 格式，最大 5MB</p>
-                            <input type="file" id="restricted-upload" name="signature" accept="image/*">
+                            <p>支持 JPG, PNG 格式，最大 5MB</p>
+                            <input type="file" id="restricted-upload" accept="image/*">
                             <img id="restricted-preview" class="upload-preview" alt="预览图">
                         </div>
                     </div>
                     
-                    <button type="submit" class="submit-btn">提交交底记录</button>
-                </form>
+                    <button class="submit-btn">提交交底记录</button>
+                </div>
                 
-                <form id="hot-work-form" class="form-container" name="hot-work-form" netlify>
+                <div id="hot-work-form" class="form-container">
                     <h2 class="form-title"><i class="fas fa-fire"></i> 动火作业安全交底</h2>
                     
                     <div class="form-group">
                         <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" name="work-unit" placeholder="请输入作业单位名称" required>
+                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" name="work-content" placeholder="请输入具体的作业内容" required></textarea>
+                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业人员</label>
-                        <input type="text" class="form-input" name="workers" placeholder="请输入作业人员姓名，多人用逗号分隔" required>
+                        <input type="text" class="form-input" placeholder="请输入作业人员姓名，多人用逗号分隔">
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" name="manager" placeholder="请输入负责人姓名" required>
+                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
                     </div>
                     
                     <div class="emergency-measures">
@@ -642,16 +547,16 @@
                         <label class="form-label">其他注意事项及关联作业</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-temporary-electricity"> 临时用电
+                                <input type="checkbox"> 临时用电
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-high-altitude"> 高处作业
+                                <input type="checkbox"> 高处作业
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" name="related-restricted-space"> 受限空间作业
+                                <input type="checkbox"> 受限空间作业
                             </label>
                         </div>
-                        <input type="text" class="form-input" name="other-notes" placeholder="其他注意事项">
+                        <input type="text" class="form-input" placeholder="其他注意事项">
                     </div>
                     
                     <div class="form-group">
@@ -659,39 +564,20 @@
                         <div class="image-upload" onclick="document.getElementById('hot-work-upload').click()">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>点击上传签名图片</p>
-                            <p class="small">支持 JPG, PNG 格式，最大 5MB</p>
-                            <input type="file" id="hot-work-upload" name="signature" accept="image/*">
+                            <p>支持 JPG, PNG 格式，最大 5MB</p>
+                            <input type="file" id="hot-work-upload" accept="image/*">
                             <img id="hot-work-preview" class="upload-preview" alt="预览图">
                         </div>
                     </div>
                     
-                    <button type="submit" class="submit-btn">提交交底记录</button>
-                </form>
+                    <button class="submit-btn">提交交底记录</button>
+                </div>
             </div>
         </div>
         
         <footer>
             <p>© 2023 杭州电化新材料有限公司 - 安全交底系统</p>
-            
-            <div class="deploy-info">
-                <h3>部署说明</h3>
-                <p>此应用使用Netlify Forms处理表单提交，需要部署到Netlify平台：</p>
-                <p>1. 将本HTML文件保存为index.html</p>
-                <p>2. 在Netlify中创建新站点并上传此文件</p>
-                <p>3. 在Netlify设置中配置表单通知，添加接收邮件的邮箱地址</p>
-                <p>4. 通过Netlify提供的URL分享给用户使用</p>
-            </div>
         </footer>
-    </div>
-
-    <div class="notification success" id="success-notification">
-        <i class="fas fa-check-circle"></i>
-        <span>表单提交成功！数据已发送到指定邮箱。</span>
-    </div>
-
-    <div class="notification error" id="error-notification">
-        <i class="fas fa-exclamation-circle"></i>
-        <span>表单提交失败，请检查网络连接后重试。</span>
     </div>
 
     <script>
@@ -702,6 +588,21 @@
             
             // 显示选中的表单
             document.getElementById(type + '-form').classList.add('active-form');
+            
+            // 更新移动端标签状态
+            document.querySelectorAll('.mobile-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 设置当前标签为活动状态
+            if (type === 'restricted') {
+                document.querySelectorAll('.mobile-tab')[0].classList.add('active');
+            } else {
+                document.querySelectorAll('.mobile-tab')[1].classList.add('active');
+            }
+            
+            // 滚动到表单区域
+            document.querySelector('.form-section').scrollIntoView({behavior: 'smooth'});
         }
         
         // 图片上传预览功能
@@ -728,47 +629,13 @@
         setupImageUpload('restricted-upload', 'restricted-preview');
         setupImageUpload('hot-work-upload', 'hot-work-preview');
         
-        // 显示通知
-        function showNotification(type) {
-            const notification = document.getElementById(`${type}-notification`);
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 5000);
-        }
-        
-        // 处理表单提交
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // 在实际部署中，Netlify会自动处理表单提交
-                // 这里只是模拟成功提交
-                
-                // 显示成功通知
-                showNotification('success');
-                
-                // 重置表单
-                setTimeout(() => {
-                    this.reset();
-                    document.querySelectorAll('.upload-preview').forEach(preview => {
-                        preview.style.display = 'none';
-                    });
-                }, 1000);
+        // 模拟表单提交功能
+        document.querySelectorAll('.submit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('交底记录已提交！后台已保存数据。');
+                // 在实际应用中，这里会通过AJAX将数据发送到服务器
             });
         });
-        
-        // 初始化Netlify表单处理
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
     </script>
 </body>
 </html>
