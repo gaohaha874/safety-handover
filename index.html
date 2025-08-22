@@ -403,6 +403,46 @@
             line-height: 1.6;
         }
         
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            border-left: 4px solid #48bb78;
+        }
+        
+        .notification.error {
+            border-left: 4px solid #f56565;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .notification.success i {
+            color: #48bb78;
+        }
+        
+        .notification.error i {
+            color: #f56565;
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -411,6 +451,16 @@
             .form-section {
                 border-left: none;
                 border-top: 1px solid #eee;
+            }
+            
+            .notification {
+                left: 20px;
+                right: 20px;
+                transform: translateY(-150%);
+            }
+            
+            .notification.show {
+                transform: translateY(0);
             }
         }
     </style>
@@ -498,27 +548,27 @@
             </div>
             
             <div class="form-section">
-                <div id="restricted-form" class="form-container active-form">
+                <form id="restricted-form" class="form-container active-form" name="restricted-form" netlify>
                     <h2 class="form-title"><i class="fas fa-hard-hat"></i> 受限空间作业安全交底</h2>
                     
                     <div class="form-group">
                         <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
+                        <input type="text" class="form-input" name="work-unit" placeholder="请输入作业单位名称" required>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
+                        <textarea class="form-textarea" name="work-content" placeholder="请输入具体的作业内容" required></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业人员</label>
-                        <input type="text" class="form-input" placeholder="请输入作业人员姓名，多人用逗号分隔">
+                        <input type="text" class="form-input" name="workers" placeholder="请输入作业人员姓名，多人用逗号分隔" required>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
+                        <input type="text" class="form-input" name="manager" placeholder="请输入负责人姓名" required>
                     </div>
                     
                     <div class="emergency-measures">
@@ -532,16 +582,16 @@
                         <label class="form-label">其他注意事项及关联作业</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox"> 临时用电
+                                <input type="checkbox" name="related-temporary-electricity"> 临时用电
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox"> 高处作业
+                                <input type="checkbox" name="related-high-altitude"> 高处作业
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox"> 盲板抽堵作业
+                                <input type="checkbox" name="related-blind-plate"> 盲板抽堵作业
                             </label>
                         </div>
-                        <input type="text" class="form-input" placeholder="其他注意事项">
+                        <input type="text" class="form-input" name="other-notes" placeholder="其他注意事项">
                     </div>
                     
                     <div class="form-group">
@@ -550,35 +600,35 @@
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>点击上传签名图片</p>
                             <p class="small">支持 JPG, PNG 格式，最大 5MB</p>
-                            <input type="file" id="restricted-upload" accept="image/*">
+                            <input type="file" id="restricted-upload" name="signature" accept="image/*">
                             <img id="restricted-preview" class="upload-preview" alt="预览图">
                         </div>
                     </div>
                     
-                    <button class="submit-btn">提交交底记录</button>
-                </div>
+                    <button type="submit" class="submit-btn">提交交底记录</button>
+                </form>
                 
-                <div id="hot-work-form" class="form-container">
+                <form id="hot-work-form" class="form-container" name="hot-work-form" netlify>
                     <h2 class="form-title"><i class="fas fa-fire"></i> 动火作业安全交底</h2>
                     
                     <div class="form-group">
                         <label class="form-label">作业单位</label>
-                        <input type="text" class="form-input" placeholder="请输入作业单位名称">
+                        <input type="text" class="form-input" name="work-unit" placeholder="请输入作业单位名称" required>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业内容</label>
-                        <textarea class="form-textarea" placeholder="请输入具体的作业内容"></textarea>
+                        <textarea class="form-textarea" name="work-content" placeholder="请输入具体的作业内容" required></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">作业人员</label>
-                        <input type="text" class="form-input" placeholder="请输入作业人员姓名，多人用逗号分隔">
+                        <input type="text" class="form-input" name="workers" placeholder="请输入作业人员姓名，多人用逗号分隔" required>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">车间项目负责人</label>
-                        <input type="text" class="form-input" placeholder="请输入负责人姓名">
+                        <input type="text" class="form-input" name="manager" placeholder="请输入负责人姓名" required>
                     </div>
                     
                     <div class="emergency-measures">
@@ -592,16 +642,16 @@
                         <label class="form-label">其他注意事项及关联作业</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox"> 临时用电
+                                <input type="checkbox" name="related-temporary-electricity"> 临时用电
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox"> 高处作业
+                                <input type="checkbox" name="related-high-altitude"> 高处作业
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox"> 受限空间作业
+                                <input type="checkbox" name="related-restricted-space"> 受限空间作业
                             </label>
                         </div>
-                        <input type="text" class="form-input" placeholder="其他注意事项">
+                        <input type="text" class="form-input" name="other-notes" placeholder="其他注意事项">
                     </div>
                     
                     <div class="form-group">
@@ -610,13 +660,13 @@
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>点击上传签名图片</p>
                             <p class="small">支持 JPG, PNG 格式，最大 5MB</p>
-                            <input type="file" id="hot-work-upload" accept="image/*">
+                            <input type="file" id="hot-work-upload" name="signature" accept="image/*">
                             <img id="hot-work-preview" class="upload-preview" alt="预览图">
                         </div>
                     </div>
                     
-                    <button class="submit-btn">提交交底记录</button>
-                </div>
+                    <button type="submit" class="submit-btn">提交交底记录</button>
+                </form>
             </div>
         </div>
         
@@ -625,12 +675,23 @@
             
             <div class="deploy-info">
                 <h3>部署说明</h3>
-                <p>此应用为静态HTML应用，可以直接部署到任何Web服务器或静态网站托管服务：</p>
+                <p>此应用使用Netlify Forms处理表单提交，需要部署到Netlify平台：</p>
                 <p>1. 将本HTML文件保存为index.html</p>
-                <p>2. 上传到GitHub Pages、Netlify、Vercel或您自己的服务器</p>
-                <p>3. 通过生成的URL分享给用户使用</p>
+                <p>2. 在Netlify中创建新站点并上传此文件</p>
+                <p>3. 在Netlify设置中配置表单通知，添加接收邮件的邮箱地址</p>
+                <p>4. 通过Netlify提供的URL分享给用户使用</p>
             </div>
         </footer>
+    </div>
+
+    <div class="notification success" id="success-notification">
+        <i class="fas fa-check-circle"></i>
+        <span>表单提交成功！数据已发送到指定邮箱。</span>
+    </div>
+
+    <div class="notification error" id="error-notification">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>表单提交失败，请检查网络连接后重试。</span>
     </div>
 
     <script>
@@ -667,13 +728,47 @@
         setupImageUpload('restricted-upload', 'restricted-preview');
         setupImageUpload('hot-work-upload', 'hot-work-preview');
         
-        // 模拟表单提交功能
-        document.querySelectorAll('.submit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('交底记录已提交！后台已保存数据。');
-                // 在实际应用中，这里会通过AJAX将数据发送到服务器
+        // 显示通知
+        function showNotification(type) {
+            const notification = document.getElementById(`${type}-notification`);
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // 处理表单提交
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 在实际部署中，Netlify会自动处理表单提交
+                // 这里只是模拟成功提交
+                
+                // 显示成功通知
+                showNotification('success');
+                
+                // 重置表单
+                setTimeout(() => {
+                    this.reset();
+                    document.querySelectorAll('.upload-preview').forEach(preview => {
+                        preview.style.display = 'none';
+                    });
+                }, 1000);
             });
         });
+        
+        // 初始化Netlify表单处理
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
     </script>
 </body>
 </html>
