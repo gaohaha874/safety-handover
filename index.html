@@ -1,186 +1,133 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <title>杭州电化 - 作业安全交底小程序</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>杭州电化 - 安全交底</title>
   <style>
-    /* 基础样式与之前一致，略 */
-    body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;margin:0;padding:20px}
-    .container{max-width:1000px;margin:0 auto;background:#fff;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden}
-    header{background:linear-gradient(120deg,#1a56db 0%,#3b82f6 100%);color:#fff;padding:25px;text-align:center}
-    .main-content{display:flex;flex-wrap:wrap;padding:20px}
-    .form-section{flex:2;min-width:400px;padding:20px}
-    .form-container{display:none}.active-form{display:block}
-    .form-group{margin-bottom:18px}
-    .form-label{display:block;font-weight:bold;margin-bottom:6px}
-    .form-input,.form-textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px}
-    .form-textarea{min-height:80px;resize:vertical}
+    :root{--blue:#1a56db;--light:#f5f7fa}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC",system-ui}
+    body{background:var(--light);min-height:100vh;padding:10px}
+    .container{max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.1)}
+    header{background:linear-gradient(120deg,var(--blue),#3b82f6);color:#fff;padding:20px 15px;text-align:center}
+    .btn-tab{display:block;width:100%;margin:15px 0;padding:15px;border:none;border-radius:8px;font-size:18px;color:#fff;cursor:pointer}
+    .btn-restricted{background:linear-gradient(135deg,#667eea,#764ba2)}
+    .btn-hot{background:linear-gradient(135deg,#f093fb,#f5576c)}
+    .form-container{display:none;padding:15px}
+    .active{display:block}
+    .form-group{margin-bottom:15px}
+    label{font-weight:bold;display:block;margin-bottom:4px}
+    input,textarea,select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;font-size:16px}
+    textarea{min-height:80px;resize:vertical}
     .checkbox-group{background:#f8fafc;padding:10px;border-radius:6px}
-    .checkbox-label{display:flex;align-items:center;margin-bottom:6px}
-    .checkbox-label input{margin-right:8px}
-    .submit-btn{background:#1a56db;color:#fff;padding:12px 24px;border:none;border-radius:6px;width:100%;cursor:pointer;font-size:16px}
+    .checkbox-label{display:flex;align-items:center;margin:6px 0}
+    .emergency{background:#fff3cd;color:#856404;padding:8px;border-radius:6px;font-size:14px}
+    .submit-btn{background:var(--blue);color:#fff;padding:14px;border:none;border-radius:8px;width:100%;font-size:16px;cursor:pointer}
     .submit-btn:hover{background:#1e4bb8}
-    .emergency{background:#fff3cd;color:#856404;padding:10px;border-radius:6px;font-size:14px;line-height:1.5}
   </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <div style="font-size:24px;font-weight:bold">杭州电化新材料有限公司</div>
-    <h1 style="margin:6px 0">作业安全交底小程序</h1>
-    <p style="margin:0;font-size:15px">移动端安全交底与风险告知确认系统</p>
+    <div style="font-size:20px;font-weight:bold">杭州电化新材料有限公司</div>
+    <h1 style="margin:6px 0;font-size:24px">作业安全交底小程序</h1>
   </header>
 
-  <div class="main-content">
-    <div style="flex:1;min-width:300px;text-align:center;padding:20px">
-      <button onclick="showForm('restricted')" style="width:100%;margin-bottom:15px;padding:15px;border:none;border-radius:10px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:18px;cursor:pointer">受限空间作业</button>
-      <button onclick="showForm('hot-work')" style="width:100%;padding:15px;border:none;border-radius:10px;background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;font-size:18px;cursor:pointer">动火作业</button>
+  <div style="padding:15px">
+    <button class="btn-tab btn-restricted" onclick="show('restricted')">受限空间作业</button>
+    <button class="btn-tab btn-hot" onclick="show('hot')">动火作业</button>
+
+    <!-- 受限空间 -->
+    <div id="restricted" class="form-container active">
+      <form name="restrictedForm" method="POST" data-netlify="true" action="/success.html" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="restrictedForm">
+        <div class="form-group"><label>作业单位 *</label><input type="text" name="unit" required></div>
+        <div class="form-group"><label>作业内容 *</label><textarea name="content" required></textarea></div>
+        <div class="form-group"><label>作业人员 *</label><input type="text" name="workers" required></div>
+        <div class="form-group"><label>车间项目负责人 *</label><input type="text" name="leader" required></div>
+
+        <label>防范措施确认</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="置换排空"> 置换排空</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="断电挂牌"> 断电挂牌</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="报警仪检测"> 报警仪检测</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="劳保用品"> 劳保用品</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="应急器材"> 应急器材</label>
+        </div>
+
+        <label>其他注意事项及关联作业</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
+          <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
+          <label class="checkbox-label"><input type="checkbox" name="others" value="盲板抽堵"> 盲板抽堵作业</label>
+        </div>
+        <input type="text" name="otherText" placeholder="其他补充说明" class="form-input">
+
+        <div class="form-group">
+          <label>应急措施</label>
+          <div class="emergency">
+            发生中毒或窒息事故时，现场人员大声呼叫，并拨打急救电话 0571-86617799-6521、0571-86617799-6629；救援时戴好正压空气呼吸器，迅速将人员转移到空气流通的地方，进行心肺复苏急救。
+          </div>
+        </div>
+
+        <div class="form-group"><label>现场负责人姓名（确认签字）*</label><input type="text" name="signName" required></div>
+        <div class="form-group"><label>现场照片（佐证）*</label><input type="file" name="photo" accept="image/*" capture="environment" required></div>
+        <button type="submit" class="submit-btn">提交交底记录</button>
+      </form>
     </div>
 
-    <div class="form-section">
-      <!-- 受限空间 -->
-      <div id="restricted-form" class="form-container active-form">
-        <h2 style="margin-top:0">受限空间作业安全交底</h2>
-        <form name="restrictedForm" method="POST" data-netlify="true" action="/success.html" enctype="multipart/form-data">
-          <input type="hidden" name="form-name" value="restrictedForm">
-          <div class="form-group">
-            <label class="form-label">作业单位 *</label>
-            <input type="text" name="unit" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">作业内容 *</label>
-            <textarea name="content" class="form-textarea" required></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-label">作业人员 *</label>
-            <input type="text" name="workers" class="form-input" placeholder="多人用逗号分隔" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">车间项目负责人 *</label>
-            <input type="text" name="leader" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">防范措施确认</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="置换排空"> 对设备内的物质进行置换、排空</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="断电挂牌"> 传动设施已断电和挂牌</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="报警仪检测"> 持续使用便携式报警仪检测</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="劳保用品"> 穿戴好劳保用品</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="应急器材"> 现场配备呼吸器、灭火器、救援绳等应急器材</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">其他注意事项及关联作业</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
-              <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
-              <label class="checkbox-label"><input type="checkbox" name="others" value="盲板抽堵"> 盲板抽堵作业</label>
-            </div>
-            <input type="text" name="otherText" class="form-input" placeholder="其他补充说明">
-          </div>
-          <div class="form-group">
-            <label class="form-label">应急措施</label>
-            <div class="emergency">
-              发生中毒或窒息事故时，现场人员大声呼叫，并拨打急救电话 0571-86617799-6521、0571-86617799-6629；救援时戴好正压空气呼吸器，迅速将人员转移到空气流通的地方，进行心肺复苏急救。
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">现场负责人姓名（确认签字）*</label>
-            <input type="text" name="signName" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">现场照片（佐证）*</label>
-            <input type="file" name="photo" accept="image/*" capture="environment" required>
-          </div>
-          <button type="submit" class="submit-btn">提交交底记录</button>
-        </form>
-      </div>
+    <!-- 动火作业 -->
+    <div id="hot" class="form-container">
+      <form name="hotForm" method="POST" data-netlify="true" action="/success.html" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="hotForm">
+        <div class="form-group"><label>作业单位 *</label><input type="text" name="unit" required></div>
+        <div class="form-group"><label>作业内容 *</label><textarea name="content" required></textarea></div>
+        <div class="form-group"><label>作业人员 *</label><input type="text" name="workers" required></div>
+        <div class="form-group"><label>车间项目负责人 *</label><input type="text" name="leader" required></div>
 
-      <!-- 动火作业 -->
-      <div id="hot-work-form" class="form-container">
-        <h2 style="margin-top:0">动火作业安全交底</h2>
-        <form name="hotForm" method="POST" data-netlify="true" action="/success.html" enctype="multipart/form-data">
-          <input type="hidden" name="form-name" value="hotForm">
-          <div class="form-group">
-            <label class="form-label">作业单位 *</label>
-            <input type="text" name="unit" class="form-input" required>
+        <label>防范措施确认</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="电焊机平整"> 电焊机平整、坚固</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="气瓶间距"> 氧气瓶与乙炔瓶间距5米以上</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="动火分析"> 动火分析取样时间符合要求</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="清理易燃品"> 作业区域无易燃易爆品</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="灭火器看护"> 现场配备灭火器，专人看护</label>
+          <label class="checkbox-label"><input type="checkbox" name="measures" value="防护用品"> 佩戴护面罩、劳保鞋等个人防护用品</label>
+        </div>
+
+        <label>其他注意事项及关联作业</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
+          <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
+          <label class="checkbox-label"><input type="checkbox" name="others" value="受限空间"> 受限空间作业</label>
+        </div>
+        <input type="text" name="otherText" placeholder="其他补充说明" class="form-input">
+
+        <div class="form-group">
+          <label>应急措施</label>
+          <div class="emergency">
+            发生触电或灼伤时，现场人员大声呼叫，并拨打安全环保部门电话 0571-86617799-6579、0571-86617799-6629；迅速查看人员受伤情况，首先确保呼吸顺畅，不能随意搬动伤者，等待救援。发生火灾迅速切断起火源，消灭初期火点，按照公司事故应急预案处理。
           </div>
-          <div class="form-group">
-            <label class="form-label">作业内容 *</label>
-            <textarea name="content" class="form-textarea" required></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-label">作业人员 *</label>
-            <input type="text" name="workers" class="form-input" placeholder="多人用逗号分隔" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">车间项目负责人 *</label>
-            <input type="text" name="leader" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">防范措施确认</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="电焊机平整"> 电焊机搁置平整、坚固</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="气瓶间距"> 氧气瓶与乙炔瓶间距5米以上</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="动火分析"> 动火分析取样时间符合要求</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="清理易燃品"> 作业区域无易燃易爆品</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="灭火器看护"> 现场配备灭火器，专人看护</label>
-              <label class="checkbox-label"><input type="checkbox" name="measures" value="防护用品"> 佩戴护面罩、劳保鞋等个人防护用品</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">其他注意事项及关联作业</label>
-            <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="others" value="临时用电"> 临时用电</label>
-              <label class="checkbox-label"><input type="checkbox" name="others" value="高处作业"> 高处作业</label>
-              <label class="checkbox-label"><input type="checkbox" name="others" value="受限空间"> 受限空间作业</label>
-            </div>
-            <input type="text" name="otherText" class="form-input" placeholder="其他补充说明">
-          </div>
-          <div class="form-group">
-            <label class="form-label">应急措施</label>
-            <div class="emergency">
-              发生触电或灼伤时，现场人员大声呼叫，并拨打安全环保部门电话 0571-86617799-6579、0571-86617799-6629；迅速查看人员受伤情况，首先确保呼吸顺畅，不能随意搬动伤者，等待救援。发生火灾迅速切断起火源，消灭初期火点，按照公司事故应急预案处理。
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">现场负责人姓名（确认签字）*</label>
-            <input type="text" name="signName" class="form-input" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">现场照片（佐证）*</label>
-            <input type="file" name="photo" accept="image/*" capture="environment" required>
-          </div>
-          <button type="submit" class="submit-btn">提交交底记录</button>
-        </form>
-      </div>
+        </div>
+
+        <div class="form-group"><label>现场负责人姓名（确认签字）*</label><input type="text" name="signName" required></div>
+        <div class="form-group"><label>现场照片（佐证）*</label><input type="file" name="photo" accept="image/*" capture="environment" required></div>
+        <button type="submit" class="submit-btn">提交交底记录</button>
+      </form>
     </div>
   </div>
-
-  <footer style="text-align:center;padding:15px;font-size:14px;color:#777">
-    © 2023 杭州电化新材料有限公司 - 安全交底系统
-  </footer>
 </div>
 
+<!-- 成功提示页 -->
 <script>
-function showForm(type){
-  document.querySelectorAll('.form-container').forEach(f=>f.classList.remove('active-form'));
-  document.getElementById(type+'-form').classList.add('active-form');
+function show(id){
+  document.querySelectorAll('.form-container').forEach(el=>el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 </script>
-
-<!-- 成功提示页 success.html -->
-<!-- 保存为 success.html 并一起上传 -->
+</body>
+</html>
 <!doctype html>
 <title>提交成功</title>
-<style>body{font-family:sans-serif;text-align:center;padding:60px}</style>
-<h2>交底记录已提交成功！</h2>
-<p>管理员会尽快处理，谢谢配合。</p>
-<p><a href="/">返回首页</a></p>
-</body>
-</html>
-
-</body>
-</html>
+<h2 style="text-align:center;padding:50px;color:#28a745">交底记录已提交成功！</h2>
+<p style="text-align:center"><a href="/">返回首页</a></p>
